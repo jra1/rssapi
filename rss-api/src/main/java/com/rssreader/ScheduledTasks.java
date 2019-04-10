@@ -20,7 +20,7 @@ public class ScheduledTasks {
 
     @Scheduled(fixedRate = 2000)
     public void scheduleTaskWithFixedRate() {
-        String m = "Fixed Rate Task :: Execution Time - %s";
+        String m = "Fixed Rate Task --> Execution Time - %s";
         String res = String.format(m, dateTimeFormatter.format(LocalDateTime.now()));
         System.out.println(res);
         
