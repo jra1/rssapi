@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.dozer.Mapper;
 
-public class Util {
+public class MapUtils {
 
 	public static <T, U> List<U> map(final Mapper mapper, final List<T> sourceList, final Class<U> destType) {
 		final List<U> dest = new ArrayList<>();

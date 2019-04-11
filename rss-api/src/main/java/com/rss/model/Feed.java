@@ -21,32 +21,32 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Table(name = "feed")
 @EntityListeners(AuditingEntityListener.class)
 public class Feed implements Serializable {
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @NotBlank
-    private String title;
+	@NotBlank
+	private String title;
 
-    @NotBlank
-    private String description;
-    
-    @NotBlank
-    @Column(name = "uri", unique = true)
-    private String uri;
+	@NotBlank
+	private String description;
 
-    private String image;
+	@NotBlank
+	@Column(name = "uri", unique = true)
+	private String uri;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date publicationDate;
-    
-    public Long getId() {
+	private String image;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
+	private Date publishedDate;
+
+	public Long getId() {
 		return id;
 	}
 
@@ -78,12 +78,12 @@ public class Feed implements Serializable {
 		this.uri = uri;
 	}
 
-	public Date getPublicationDate() {
-		return publicationDate;
+	public Date getPublishedDate() {
+		return publishedDate;
 	}
 
-	public void setPublicationDate(Date publicationDate) {
-		this.publicationDate = publicationDate;
+	public void setPublishedDate(Date publishedDate) {
+		this.publishedDate = publishedDate;
 	}
 
 	public String getImage() {
@@ -93,14 +93,4 @@ public class Feed implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
-	public String toMyString() {
-        String JSONRESPONSE = "{\"title\":\"%s\", \"description\":\"%s\"}";
-        
-        String respuesta = String.format(JSONRESPONSE, getTitle(), getDescription());
-        respuesta += "\n\n";
-        
-        return respuesta;
-    }
-
 }

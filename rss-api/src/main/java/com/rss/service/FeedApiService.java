@@ -1,4 +1,4 @@
-package com.rss.api.service;
+package com.rss.service;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.rss.model.Feed;
 import com.rss.respository.FeedRepository;
 
 @Service
-public class FeedService {
+public class FeedApiService {
 
 	@Autowired
 	FeedRepository feedRepository;
@@ -31,9 +31,11 @@ public class FeedService {
 	public Feed updateFeed(Long feedId, Feed feedDetails) {
 
 		Feed feed = feedRepository.findById(feedId).orElseThrow(() -> new ResourceNotFoundException("Feed", "id", feedId));
-
-		// feed.setTitle(feedDetails.getTitle());
-		// feed.setContent(feedDetails.getContent());
+		feed.setTitle(feedDetails.getTitle());
+		feed.setDescription(feedDetails.getDescription());
+		feed.setUri(feedDetails.getUri());
+		feed.setImage(feedDetails.getImage());
+		feed.setPublishedDate(feedDetails.getPublishedDate());
 
 		Feed updatedFeed = feedRepository.save(feed);
 		return updatedFeed;

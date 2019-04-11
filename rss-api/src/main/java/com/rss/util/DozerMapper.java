@@ -1,4 +1,4 @@
-package com.rss.config;
+package com.rss.util;
 
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;

@@ -8,7 +8,7 @@ public class FeedResponse {
     private String description;
     private String uri;
     private String image;
-    private Date publicationDate;
+    private Date publishedDate;
 
 	public String getTitle() {
 		return title;
@@ -34,12 +34,12 @@ public class FeedResponse {
 		this.uri = uri;
 	}
 
-	public Date getPublicationDate() {
-		return publicationDate;
+	public Date getPublishedDate() {
+		return publishedDate;
 	}
 
-	public void setPublicationDate(Date publicationDate) {
-		this.publicationDate = publicationDate;
+	public void setPublishedDate(Date publishedDate) {
+		this.publishedDate = publishedDate;
 	}
 
 	public String getImage() {

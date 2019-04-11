@@ -1,4 +1,4 @@
-package com.rss.api.controller;
+package com.rss.controller;
 
 import java.util.List;
 
@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rss.api.service.FeedService;
 import com.rss.dto.FeedRequest;
 import com.rss.dto.FeedResponse;
 import com.rss.model.Feed;
-import com.rss.util.Util;
+import com.rss.service.FeedApiService;
+import com.rss.util.MapUtils;
 
 @RestController
 @RequestMapping("/rssapi")
-public class FeedController {
+public class FeedApiController {
 
 	@Autowired
-	FeedService feedService;
+	FeedApiService feedApiService;
 
 	@Autowired
 	Mapper mapper;
@@ -35,32 +35,33 @@ public class FeedController {
 	// Get All Feed
 	@GetMapping("/feed")
 	public List<FeedResponse> getAllFeeds() {
-		return Util.map(mapper, feedService.getAll(), FeedResponse.class);
+		return MapUtils.map(mapper, feedApiService.getAll(), FeedResponse.class);
 	}
 
 	// Create a new Feed
 	@PostMapping("/feed")
 	public FeedResponse createFeed(@Valid @RequestBody FeedRequest feedRequest) {
 		Feed feed = mapper.map(feedRequest, Feed.class);
-		return mapper.map(feedService.create(feed), FeedResponse.class);
+		return mapper.map(feedApiService.create(feed), FeedResponse.class);
 	}
 
 	// Get a Single Feed
 	@GetMapping("/feed/{id}")
 	public FeedResponse getFeedById(@PathVariable(value = "id") Long feedId) {
-		return mapper.map(feedService.getFeedById(feedId), FeedResponse.class);
+		return mapper.map(feedApiService.getFeedById(feedId), FeedResponse.class);
 	}
 
 	// Update a Feed
 	@PutMapping("/feed/{id}")
-	public FeedResponse updateFeed(@PathVariable(value = "id") Long feedId, @Valid @RequestBody FeedRequest feedRequest) {
+	public FeedResponse updateFeed(@PathVariable(value = "id") Long feedId,
+			@Valid @RequestBody FeedRequest feedRequest) {
 		Feed feed = mapper.map(feedRequest, Feed.class);
-	    return mapper.map(feedService.updateFeed(feedId, feed), FeedResponse.class);
+		return mapper.map(feedApiService.updateFeed(feedId, feed), FeedResponse.class);
 	}
 
 	// Delete a Feed
 	@DeleteMapping("/feed/{id}")
 	public ResponseEntity<?> deleteFeed(@PathVariable(value = "id") Long feedId) {
-		return feedService.deleteFeed(feedId);
+		return feedApiService.deleteFeed(feedId);
 	}
 }

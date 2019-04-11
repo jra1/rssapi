@@ -40,11 +40,11 @@ public class FeedRequest {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public Date getPublicationDate() {
-		return publicationDate;
+	public Date getPublishedDate() {
+		return publishedDate;
 	}
-	public void setPublicationDate(Date publicationDate) {
-		this.publicationDate = publicationDate;
+	public void setPublishedDate(Date publishedDate) {
+		this.publishedDate = publishedDate;
 	}
-	private Date publicationDate;
+	private Date publishedDate;
 }
