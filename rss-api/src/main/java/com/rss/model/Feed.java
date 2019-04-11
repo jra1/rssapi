@@ -1,4 +1,4 @@
-package com.rssapi.model;
+package com.rss.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,9 +18,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "news")
+@Table(name = "feed")
 @EntityListeners(AuditingEntityListener.class)
-public class News implements Serializable {
+public class Feed implements Serializable {
     /**
 	 * 
 	 */
@@ -39,6 +39,8 @@ public class News implements Serializable {
     @NotBlank
     @Column(name = "uri", unique = true)
     private String uri;
+
+    private String image;
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -84,13 +86,21 @@ public class News implements Serializable {
 		this.publicationDate = publicationDate;
 	}
 
-	/*@Override
-    public String toString() {
-        String JSONRESPONSE = "{\"id\":%d, \"title\":\"%s\", \"description\":\"%s\"}";
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String toMyString() {
+        String JSONRESPONSE = "{\"title\":\"%s\", \"description\":\"%s\"}";
         
-        String respuesta = String.format(JSONRESPONSE, getId(), getTitle(), getDescription());
+        String respuesta = String.format(JSONRESPONSE, getTitle(), getDescription());
+        respuesta += "\n\n";
         
         return respuesta;
-    }*/
+    }
 
 }
