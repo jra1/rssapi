@@ -18,8 +18,8 @@ public class ReaderService {
 	FeedRepository feedRepository;
 
 	public void saveFeed(SyndEntry entry) {
+		Feed feed = new Feed();
 		try {
-			Feed feed = new Feed();
 			feed.setTitle(entry.getTitle());
 			feed.setDescription(entry.getDescription().getValue());
 			feed.setUri(entry.getUri());
@@ -28,7 +28,7 @@ public class ReaderService {
 			feed.setPublishedDate(entry.getPublishedDate());
 			feedRepository.save(feed);
 		} catch (DataIntegrityViolationException e) {
-			System.out.println("This feed is already saved");
+			System.out.println("This feed is already saved : " + feed.getUri());
 		} catch (Exception e) {
 			System.out.println("Error saving feed... : " + e.getMessage());
 		}

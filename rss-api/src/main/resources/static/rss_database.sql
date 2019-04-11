@@ -12,5 +12,5 @@ CREATE TABLE `feed` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
-INSERT INTO feed (title, description, uri, image, publication_date) 
+INSERT INTO feed (title, description, uri, image, published_date) 
 	VALUES ('Prueba', 'This is the description for prueba', 'www.google.com', 'https://nos.nl/data/image/2019/04/11/542976/1008x567.jpg', now());
