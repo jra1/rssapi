@@ -26,7 +26,7 @@ public class ReaderController {
 	ConfigUtils configUtil;
 
 	@Scheduled(fixedRateString = "${fixedRate.milliseconds}")
-	public void checkTheFeeds() {
+	public void checkFeed() {
 		URL feedSource;
 		try {
 			feedSource = new URL(configUtil.getProperty("feed.url"));
