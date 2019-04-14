@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 
 import com.rss.service.ReaderService;
 import com.rss.util.ConfigUtils;
-import com.rss.util.MapUtils;
-import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
@@ -34,11 +32,9 @@ public class ReaderController {
 			feedSource = new URL(configUtil.getProperty("feed.url"));
 			SyndFeedInput input = new SyndFeedInput();
 			SyndFeed feed = input.build(new XmlReader(feedSource));
-			for (SyndEntry entry : MapUtils.castList(SyndEntry.class, feed.getEntries())) {
-				readerService.saveFeed(entry);
-			}
+			readerService.manageFeed(feed);
 		} catch (Exception e) {
-			logger.error(String.format("Error reading feeds: %s", e.getMessage()));
+			logger.error(String.format("Error reading feed: %s", e.getMessage()));
 		}
 	}
 }

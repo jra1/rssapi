@@ -13,6 +13,7 @@ import com.rss.respository.FeedRepository;
 import com.rss.util.MapUtils;
 import com.sun.syndication.feed.synd.SyndEnclosure;
 import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
 
 @Service
 public class ReaderService {
@@ -22,7 +23,13 @@ public class ReaderService {
 	@Autowired
 	FeedRepository feedRepository;
 
-	public void saveFeed(SyndEntry entry) {
+	public void manageFeed(SyndFeed feed) {
+		for (SyndEntry entry : MapUtils.castList(SyndEntry.class, feed.getEntries())) {
+			saveEntry(entry);
+		}
+	}
+	
+	private void saveEntry(SyndEntry entry) {
 		Feed feed = new Feed();
 		try {
 			feed.setTitle(entry.getTitle());

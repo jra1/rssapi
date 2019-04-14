@@ -32,7 +32,7 @@ public class FeedApiController {
 	@Autowired
 	Mapper mapper;
 
-	// Get All Feeds
+	// Get All Feed
 	@GetMapping("/feed")
 	public List<FeedResponse> getAllFeeds() {
 		return MapUtils.map(mapper, feedApiService.getAll(), FeedResponse.class);
