@@ -32,7 +32,7 @@ public class FeedApiController {
 	@Autowired
 	Mapper mapper;
 
-	// Get All Feed
+	// Get All Feeds
 	@GetMapping("/feed")
 	public List<FeedResponse> getAllFeeds() {
 		return MapUtils.map(mapper, feedApiService.getAll(), FeedResponse.class);
@@ -45,7 +45,7 @@ public class FeedApiController {
 		return mapper.map(feedApiService.create(feed), FeedResponse.class);
 	}
 
-	// Get a Single Feed
+	// Get a Feed
 	@GetMapping("/feed/{id}")
 	public FeedResponse getFeedById(@PathVariable(value = "id") Long feedId) {
 		return mapper.map(feedApiService.getFeedById(feedId), FeedResponse.class);
@@ -61,7 +61,7 @@ public class FeedApiController {
 
 	// Delete a Feed
 	@DeleteMapping("/feed/{id}")
-	public ResponseEntity<?> deleteFeed(@PathVariable(value = "id") Long feedId) {
+	public ResponseEntity<Feed> deleteFeed(@PathVariable(value = "id") Long feedId) {
 		return feedApiService.deleteFeed(feedId);
 	}
 }

@@ -7,5 +7,7 @@ import com.rss.model.Feed;
 
 @Repository
 public interface FeedRepository extends JpaRepository<Feed, Long>{
-
+	
+	public Feed findByUri(String uri);
+	
 }

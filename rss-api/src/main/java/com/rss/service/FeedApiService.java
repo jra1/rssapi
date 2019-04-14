@@ -37,15 +37,18 @@ public class FeedApiService {
 		feed.setImage(feedDetails.getImage());
 		feed.setPublishedDate(feedDetails.getPublishedDate());
 
-		Feed updatedFeed = feedRepository.save(feed);
-		return updatedFeed;
+		return feedRepository.save(feed);
 	}
 	
-	public ResponseEntity<?> deleteFeed(Long feedId) {
+	public ResponseEntity<Feed> deleteFeed(Long feedId) {
 		Feed feed = feedRepository.findById(feedId).orElseThrow(() -> new ResourceNotFoundException("Feed", "id", feedId));
 
 		feedRepository.delete(feed);
 
 		return ResponseEntity.ok().build();
 	}
+	
+    public Feed getFeedByUri(String uri) {
+        return feedRepository.findByUri(uri);
+    }
 }
