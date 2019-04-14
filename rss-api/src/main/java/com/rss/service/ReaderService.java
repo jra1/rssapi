@@ -39,6 +39,7 @@ public class ReaderService {
 			feed.setImage(l.get(0).getUrl());
 			feed.setPublishedDate(entry.getPublishedDate());
 			feedRepository.save(feed);
+			logger.info(String.format("Saved feed : %s", feed.getUri()));
 		} catch (DataIntegrityViolationException e) {
 			logger.info(String.format("This feed is already saved : %s", feed.getUri()));
 		} catch (Exception e) {
