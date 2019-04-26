@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.rss.respository.FeedRepository;
-import com.rss.service.FeedApiService;
+import com.rss.service.FeedApiServiceImpl;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(FeedApiController.class)
@@ -33,8 +33,8 @@ public class FeedApiControllerTest {
 	static class FeedApiServiceTestConfiguration {
 
 		@Bean
-		public FeedApiService feedApiService() {
-			return new FeedApiService();
+		public FeedApiServiceImpl feedApiService() {
+			return new FeedApiServiceImpl();
 		}
 	}
 

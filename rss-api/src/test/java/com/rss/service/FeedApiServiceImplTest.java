@@ -16,19 +16,19 @@ import com.rss.model.Feed;
 import com.rss.respository.FeedRepository;
 
 @RunWith(SpringRunner.class)
-public class FeedApiServiceTest {
+public class FeedApiServiceImplTest {
 
 	@TestConfiguration
 	static class FeedApiServiceTestConfiguration {
 
 		@Bean
-		public FeedApiService feedApiService() {
-			return new FeedApiService();
+		public FeedApiServiceImpl feedApiService() {
+			return new FeedApiServiceImpl();
 		}
 	}
 
 	@Autowired
-	private FeedApiService feedApiService;
+	private FeedApiServiceImpl feedApiService;
 
 	@MockBean
 	private FeedRepository feedRepository;

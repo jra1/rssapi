@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rss.dto.FeedRequest;
 import com.rss.dto.FeedResponse;
 import com.rss.model.Feed;
-import com.rss.service.FeedApiService;
+import com.rss.service.FeedApiServiceImpl;
 import com.rss.util.MapUtils;
 
 @RestController
@@ -27,7 +27,7 @@ import com.rss.util.MapUtils;
 public class FeedApiController {
 
 	@Autowired
-	FeedApiService feedApiService;
+	FeedApiServiceImpl feedApiService;
 
 	@Autowired
 	Mapper mapper;

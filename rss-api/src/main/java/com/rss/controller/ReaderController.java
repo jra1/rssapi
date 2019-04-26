@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
-import com.rss.service.ReaderService;
+import com.rss.service.ReaderServiceImpl;
 import com.rss.util.ConfigUtils;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
@@ -20,7 +20,7 @@ public class ReaderController {
 	private static final Logger logger = LoggerFactory.getLogger(ReaderController.class);
 	
 	@Autowired
-	ReaderService readerService;
+	ReaderServiceImpl readerService;
 
 	@Autowired
 	ConfigUtils configUtil;
